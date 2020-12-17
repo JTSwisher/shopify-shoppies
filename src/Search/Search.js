@@ -7,15 +7,15 @@ function Search(props) {
     // const axios = require('axios');
 
     const fetchMovies = () => {
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`)
+        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${query}`)
         .then(res => res.json())
-        .then(result => setQueryResults(result.Search))
+        .then(result => console.log(result))
         .then(props.movieDataCallback(queryResults))
     };
 
-    const handleInputChange = (e) => {
-        setQuery(e);
-        fetchMovies()
+    const handleInputChange = (q) => {
+        setQuery(q);
+        setTimeout(() => fetchMovies(), 1000)
     };
 
     return(
@@ -25,6 +25,6 @@ function Search(props) {
             </form>
         </div>
     )
-};
+}
 
 export default Search;

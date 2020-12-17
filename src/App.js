@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
-import Search from './Search/Search'
-import RenderMovieData from './RenderMovieData/RenderMovieData'
+import Search from './Search/Search';
+import RenderMovieData from './RenderMovieData/RenderMovieData';
 
 function App() {
   const [movieData, setMovieData] = useState();
 
   const setMovieDataCallback = (data) => {
     setMovieData(data)
-  }
+  };
 
   return (
     <>
