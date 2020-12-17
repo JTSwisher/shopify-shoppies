@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Search from './Search/Search'
+import RenderMovieData from './RenderMovieData/RenderMovieData'
 
 function App() {
   const [movieData, setMovieData] = useState();
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Search movieDataCallback={ setMovieDataCallback }/>
+      <RenderMovieData />
     </>
   );
 }
