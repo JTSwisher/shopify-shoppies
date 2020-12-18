@@ -9,7 +9,7 @@ function Search(props) {
     const fetchMovies = () => {
         fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${query}`)
         .then(res => res.json())
-        .then(result => console.log(result))
+        .then(result => setQueryResults(result.Search))
         .then(props.movieDataCallback(queryResults))
     };
 

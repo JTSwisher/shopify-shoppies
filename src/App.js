@@ -4,7 +4,7 @@ import Search from './Search/Search';
 import RenderMovieData from './RenderMovieData/RenderMovieData';
 
 function App() {
-  const [movieData, setMovieData] = useState();
+  const [movieData, setMovieData] = useState([]);
 
   const setMovieDataCallback = (data) => {
     setMovieData(data)
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Search movieDataCallback={ setMovieDataCallback }/>
-      <RenderMovieData />
+      <RenderMovieData data={movieData}/>
     </>
   );
 }
