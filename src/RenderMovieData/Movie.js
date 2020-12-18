@@ -10,12 +10,15 @@ function Movie(props) {
 
     return (
         <>
-        <div className="movie-header" style={{display: (display ? '' : 'none')}}>
-            <img id="poster" src={props.data.Poster} alt="Poster"/>
-            <div className="movie-header-details">
-                <FaTimes id="show-details-exit-icon" onClick={() => handleMovieDetailDisplay()}/>
-                <p id="movie-details-title">Title: {props.data.Title}</p>
-                <p id="movie-details-year">Year: {props.data.Year}</p>
+        <div className="movie-details" style={{display: (display ? '' : 'none')}}>
+            <div className="movie-details-header-group">
+                <img id="movie-details-poster" src={props.data.Poster} alt="Poster"/>
+                <div className="movie-header-details">
+                    <FaTimes id="movie-details-exit-icon" onClick={() => handleMovieDetailDisplay()}/>
+                    <p id="movie-details-title">Title: {props.data.Title}</p>
+                    <p id="movie-details-year">Year: {props.data.Year}</p>
+                    <button id="save-movie-button" type="submit">Nominate</button>
+                </div>
             </div>
         </div>
         <div className="movie">
