@@ -6,4 +6,6 @@ body, html {
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: black;
+  color: white;
 }

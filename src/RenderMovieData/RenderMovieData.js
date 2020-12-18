@@ -1,11 +1,22 @@
-import React from 'react';
-import Movie from './Movie'
-import './RenderMovieData.css'
+import React, { useState } from 'react';
+import Movie from './Movie';
+import './RenderMovieData.css';
+
 function RenderMovieData(props) {
-    
-    let movies = props.data ? props.data.map((e, i) => <Movie data={e} key={i} />) : <h1>no movie data</h1>
+    const [overlayDisplay, setOverlayDisplay] = useState(false);
+    let movies =  props.data.map((e, i) => {
+       return <Movie
+                data={e}
+                key={i}
+                handleNomination={ props.handleNomination }
+                overlayCallback={setOverlayDisplay}
+                overlayState={overlayDisplay}
+              />
+    });
+
     return (
         <div className="movie-container">
+            <div className="overlay" style={{display: (overlayDisplay ? '' : 'none')}} ></div>
             { movies }
         </div>
     )
