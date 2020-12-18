@@ -2,23 +2,37 @@ import React, {useState} from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 function Movie(props) {
-    const [display, setDisplay] = useState(false);
-
+    const [detailsDisplay, setDetailsDisplay] = useState(false);
+    
     const handleMovieDetailDisplay = () => {
-        setDisplay(!display);
+        setDetailsDisplay(!detailsDisplay);
         props.overlayCallback(!props.overlayState)
     };
 
+    const saveMovieToNominations = () => {
+        props.nominateMovie(props.data);
+        handleMovieDetailDisplay()
+    };
+
+    let nominationButton = props.nominations.length === 5 ? <p id="max-nomination-message">*Maximum nominations reached. Remove a movie to nominate another</p> : 
+        <button
+            id="save-movie-button"
+            type="submit"
+            style={{display: (props.nominations.hasOwnProperty(props.data.Title) ? "none" : "")}}
+            onClick={() => saveMovieToNominations()}>
+            Nominate
+        </button>;
+
     return (
         <>
-        <div className="movie-details" style={{display: (display ? '' : 'none')}}>
+        <div className="movie-details" style={{display: (detailsDisplay ? '' : 'none')}}>
             <div className="movie-details-header-group">
                 <img id="movie-details-poster" src={props.data.Poster} alt="Poster"/>
                 <div className="movie-header-details">
                     <FaTimes id="movie-details-exit-icon" onClick={() => handleMovieDetailDisplay()}/>
                     <p id="movie-details-title">Title: {props.data.Title}</p>
                     <p id="movie-details-year">Year: {props.data.Year}</p>
-                    <button id="save-movie-button" type="submit" onClick={() => props.handleNomination(props.data)}>Nominate</button>
+                    { nominationButton }
                 </div>
             </div>
         </div>
@@ -32,3 +46,6 @@ function Movie(props) {
 
 export default Movie;
 
+///// banner when 5 nominees have been added
+// remove nominate button if movie has been nominated
+//unfuck the api calls query state is fuckedclear

@@ -125,3 +125,8 @@
     border: 1px solid #77A6F7;
     background-color: #77A6F7;
 }
+
+#max-nomination-message{
+    font-size: .75em;
+    margin-right: 5px;
+}

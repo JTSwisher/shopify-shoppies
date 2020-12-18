@@ -8,7 +8,8 @@ function RenderMovieData(props) {
        return <Movie
                 data={e}
                 key={i}
-                handleNomination={ props.handleNomination }
+                nominations={props.nominations}
+                nominateMovie={ props.nominateMovie }
                 overlayCallback={setOverlayDisplay}
                 overlayState={overlayDisplay}
               />
