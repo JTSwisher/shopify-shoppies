@@ -13,7 +13,7 @@ function Search(props) {
     }, [query]);
 
     useEffect(() => {
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${queryFinal}`)
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${queryFinal}`)
         .then(res => res.json())
         .then(result => movieDataCallback(result.Search))
     }, [queryFinal, movieDataCallback, API_KEY]);
