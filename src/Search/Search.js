@@ -16,7 +16,7 @@ function Search(props) {
         fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${queryFinal}`)
         .then(res => res.json())
         .then(result => movieDataCallback(result.Search))
-    }, [queryFinal, movieDataCallback, API_KEY]);
+    }, [queryFinal]);
 
     return(
         <input className="search-input" placeholder="Search movies..." value={ query } onChange={ e => setQuery(e.target.value) } />

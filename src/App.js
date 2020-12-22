@@ -16,6 +16,7 @@ function App() {
   }, [userNominations]);
 
   const setMovieDataCallback = (data) => {
+    console.log(data)
       setMovieData(data)
   };
 
