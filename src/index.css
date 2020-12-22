@@ -6,6 +6,9 @@ body, html {
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: #008060;
+  color: whitek;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 1px;
   color: white;
 }

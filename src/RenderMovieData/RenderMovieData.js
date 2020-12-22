@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Movie from './Movie';
 import './RenderMovieData.css';
 
 function RenderMovieData(props) {
     const [overlayDisplay, setOverlayDisplay] = useState(false);
-    let movies =  props.data.map((e, i) => {
+    const { nominationsIsDisplayed, data, nominations, nominateMovieCallback } = props;
+
+    useEffect(() => {
+        if (nominationsIsDisplayed) setOverlayDisplay(false);
+     }, [nominationsIsDisplayed]);
+
+    let movies =  data.map((e, i) => {
        return <Movie
-                data={e}
-                key={i}
-                nominations={props.nominations}
-                nominateMovie={ props.nominateMovie }
-                overlayCallback={setOverlayDisplay}
-                overlayState={overlayDisplay}
-              />
+                data={ e }
+                key={ i }
+                nominations={ nominations }
+                nominateMovieCallback={ nominateMovieCallback }
+                nominationsIsDisplayed={ nominationsIsDisplayed }
+                overlayCallback={ setOverlayDisplay }
+                overlayState={ overlayDisplay } />
     });
 
     return (
-        <div className="movie-container">
+        <>
             <div className="overlay" style={{display: (overlayDisplay ? '' : 'none')}} ></div>
-            { movies }
-        </div>
+            <div className="movie-container">
+                { movies }
+            </div>
+        </>
     )
 }
 

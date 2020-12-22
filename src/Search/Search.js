@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './Search.css'
 
 function Search(props) {
-    const [query, setQuery] = useState("");
-    const [queryResults, setQueryResults] = useState();
     const API_KEY = process.env.REACT_APP_OMDB_KEY;
-    // const axios = require('axios');
+    const [query, setQuery] = useState("");
+    const [queryFinal, setQueryFinal] = useState("");
+    const { movieDataCallback } = props;
 
-    const fetchMovies = () => {
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${query}`)
+    useEffect(() => {
+        const timeOutId = setTimeout(() => setQueryFinal(query), 500);
+        return () => clearTimeout(timeOutId)
+    }, [query]);
+
+    useEffect(() => {
+        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&type=movie&s=${queryFinal}`)
         .then(res => res.json())
-        .then(result => setQueryResults(result.Search))
-        .then(props.movieDataCallback(queryResults))
-    };
-
-    const handleInputChange = (q) => {
-        setQuery(q);
-        setTimeout(() => fetchMovies(), 1000)
-    };
+        .then(result => movieDataCallback(result.Search))
+    }, [queryFinal, movieDataCallback, API_KEY]);
 
     return(
-        <div className="search-container">
-            <form>
-                <input value={query} onChange={(e) => handleInputChange(e.target.value) } />
-            </form>
-        </div>
+        <input className="search-input" placeholder="Search movies..." value={ query } onChange={ e => setQuery(e.target.value) } />
     )
 }
 
 export default Search;
+

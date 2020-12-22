@@ -1,0 +1,74 @@
+.nomination-container {
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 80vh;
+    overflow: scroll;
+    z-index: 101;
+    top: 275px;
+    left: 50%;
+    margin: -150px 0 0 -200px;
+    background-color: #fbf7ed;
+    border: 1px solid white;
+    color: #42474c;
+}
+
+
+.overlay {
+    position: absolute;
+    background-color: rgba(0,0,0,0.80);
+    height: 100vh;
+    width: 100%;
+}
+
+.nomination-details {
+    z-index: 201;
+    margin-top: 0;
+}
+
+#nominations-exit-icon {
+    position: absolute;
+    cursor: pointer;
+    font-size: 1.15em;
+    margin-left: 360px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    z-index: 301;
+    color: #008060;
+}
+
+#nominations-exit-icon:hover {
+    color: #004c3f;
+}
+
+#no-nominations-message {
+    margin-left: 100px;
+}
+
+#max-nominations-message {
+    margin-left: 70px;
+    color: red;
+}
+
+#remove-nomination-button {
+    color: #42474c;
+    font-size: 1.25em;
+    cursor: pointer;
+    background: none;
+    margin-top: 20px;
+    margin-left: 25px;
+    width: 125px;
+    height: 40px;
+    border: 1.5px solid #42474c;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+}
+
+#remove-nomination-button:hover {
+    color: white;
+    border: 1px solid #008060;
+    background-color: #008060;
+}
